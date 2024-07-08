@@ -189,18 +189,21 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <az-checkbox id="switch" title="Is this a switch?" type="switch"></az-checkbox>
     <az-checkbox id="disabledSwitch" title="This switch is disabled" type="switch" isdisabled></az-checkbox>
   </div>
+
 <h2>Text boxes</h2>
   <div class="strip-h">
-    <az-text-input id="default-single-line-input" inputType="input" title="Single Line Input" placeholder="Enter text here"></az-text-input>
-    <az-text-input id="default-multiline-input" inputType="textarea" title="Multiline Input" placeholder="Enter multiline text here"></az-text-input>
+    <az-text-input id="default-single-line-input" inputType="input" title="Single Line Input" labelPosition="topLeft" placeholder="Enter text here"></az-text-input>
+    <az-text-input id="default-multiline-input" rows="6" inputType="textarea" title="Multiline Input" labelPosition="topRight" placeholder="Enter multiline text here"></az-text-input>
+    <az-text-input id="default-multiline-input" rows="5" inputType="textarea" title="Multiline Input" labelPosition="topCenter" placeholder="Enter multiline text here"></az-text-input>
   </div>
   <div class="strip-h">
-    <az-text-input id="info-single-line-input" inputType="input" title="Single Line Input" placeholder="Enter text here" status="info"></az-text-input>
-    <az-text-input id="info-multiline-input" inputType="textarea" title="Multiline Input" placeholder="Enter multiline text here" status="info"></az-text-input>
+    <az-text-input id="info-single-line-input" inputType="input" title="Single Line Input" labelPosition="left" placeholder="Enter text here" status="info"></az-text-input>
+    <az-text-input id="info-multiline-input" inputType="textarea" title="Multiline Input" labelPosition="right" placeholder="Enter multiline text here" status="info"></az-text-input>
   </div>
   <div class="strip-h">
-    <az-text-input id="ok-single-line-input" inputType="input" title="Single Line Input" placeholder="Enter text here" status="ok"></az-text-input>
-    <az-text-input id="ok-multiline-input" inputType="textarea" title="Multiline Input" placeholder="Enter multiline text here" status="ok"></az-text-input>
+    <az-text-input id="ok-single-line-input" inputType="input" title="Single Line Input" labelPosition="bottomLeft" placeholder="Enter text here" status="ok"></az-text-input>
+    <az-text-input id="ok-multiline-input" inputType="textarea" title="Multiline Input" labelPosition="bottomRight" placeholder="Enter multiline text here" status="ok"></az-text-input>
+    <az-text-input id="ok-multiline-input" inputType="textarea" title="Multiline Input" labelPosition="bottomCenter" placeholder="Enter multiline text here" status="ok"></az-text-input>
   </div>
   <div class="strip-h">
     <az-text-input id="error-single-line-input" inputType="input" title="Single Line Input" placeholder="Enter text here" status="error"></az-text-input>

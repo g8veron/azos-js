@@ -1,4 +1,3 @@
-import { isOneOf } from 'azos/strings';
 import { html, parseRank, parseStatus } from '../ui.js';
 import { AzosPart } from './part.js';
 import { baseStyles, textInputStyles } from './styles.js';
@@ -11,7 +10,9 @@ export class TextInput extends AzosPart {
     inputType: { type: String }, // 'input' or 'textarea'
     title: { type: String },
     placeholder: { type: String },
-    value: { type: String }
+    value: { type: String },
+    rows: { type: Number }, // number of rows for textarea
+    labelPosition: { type: String } // 'topLeft', 'topCenter', 'topRight', 'left', 'right', 'bottomLeft', 'bottomCenter', 'bottomRight'
   };
 
   constructor() {
@@ -20,6 +21,8 @@ export class TextInput extends AzosPart {
     this.title = '';
     this.placeholder = '';
     this.value = '';
+    this.rows = 4; // default rows for textarea
+    this.labelPosition = 'topLeft'; // default label position
   }
 
   /** True if the input type is simple text box instead of textarea */
@@ -33,17 +36,18 @@ export class TextInput extends AzosPart {
     const clsBgColor = `${parseStatus(this.status, true, "Bg")}`;
     const clsTxtColor = `${parseStatus(this.status, true, "Txt")}`;
     const disableClass = `${this.isDisabled ? 'disabled' : ''}`;
+    const labelClass = `label-${this.labelPosition}`;
 
     const inputElement = html`${this.isTextarea
       ? html`
-        <textarea id="${this.id}" class="${clsRank} ${clsBgColor} ${clsTxtColor}" placeholder="${this.placeholder}" .disabled=${this.isDisabled}>${this.value}</textarea>
+        <textarea id="${this.id}" class="${clsRank} ${clsBgColor} ${clsTxtColor}" placeholder="${this.placeholder}" rows="${this.rows}" .disabled=${this.isDisabled}>${this.value}</textarea>
       ` : html`
         <input type="text" id="${this.id}" class="${clsRank} ${clsBgColor} ${clsTxtColor}" placeholder="${this.placeholder}" .value="${this.value}" .disabled=${this.isDisabled} />
       `
     }`;
 
     return html`
-      <div class="${disableClass}">
+      <div class="${disableClass} ${labelClass}">
         <label for="${this.id}" class="${clsRank} ${clsTxtColor}">${this.title}</label>
         ${inputElement}
       </div>

@@ -15,14 +15,12 @@ export const baseStyles = css`
 .alert   { background: var(--s-alert-bg-ctl);  color: var(--s-alert-fg-ctl); border: var(--s-alert-bor-ctl);}
 .error   { background: var(--s-error-bg-ctl);  color: var(--s-error-fg-ctl); border: var(--s-error-bor-ctl);}
 
-.defaultBg { background: var(--s-default-bg); }
-.okBg      { background: var(--s-ok-bg); }
-.infoBg    { background: var(--s-info-bg); }
-.warningBg { background: var(--s-warn-bg); }
-.alertBg   { background: var(--s-alert-bg); }
-.errorBg   { background: var(--s-error-bg); }
+.okBg      { background: var(--s-ok-bg-ctl); }
+.infoBg    { background: var(--s-info-bg-ctl); }
+.warningBg { background: var(--s-warn-bg-ctl); }
+.alertBg   { background: var(--s-alert-bg-ctl); }
+.errorBg   { background: var(--s-error-bg-ctl); }
 
-.defaultTxt { color: var(--s-default-fg-ctl); }
 .okTxt      { color: var(--s-ok-fg-ctl); }
 .infoTxt    { color: var(--s-info-fg-ctl); }
 .warningTxt { color: var(--s-warn-fg-ctl); }
@@ -240,16 +238,46 @@ export const radioStyles=css`
 
 export const textInputStyles = css`
   div {
-    display:block;
-    margin:10px;
-    text-align:left;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    text-align: left;
+  }
+  .label-topLeft, .label-topCenter, .label-topRight {
+    flex-direction: column;
+  }
+  .label-topLeft label, .label-topCenter label, .label-topRight label {
+    margin-bottom: .5em;
+  }
+  .label-left, .label-right {
+    flex-direction: row;
+    align-items: center;
+  }
+  .label-right {
+    flex-direction: row-reverse;
+  }
+  .label-bottomLeft, .label-bottomCenter, .label-bottomRight {
+    flex-direction: column-reverse;
+  }
+  .label-bottomLeft, .label-bottomCenter, .label-bottomRight {
+    margin-top: .5em;
   }
   label {
     display: block;
-    margin-bottom: .5em;
   }
-  {
-    color: #b4b4b4;
+  .label-topCenter label, .label-bottomCenter label {
+    align-self: center;
+  }
+  .label-topRight label, .label-bottomRight label {
+    align-self: flex-end;
+  }
+  .label-left label {
+    margin-right: .5em;
+    margin-bottom: 0;
+  }
+  .label-right label {
+    margin-left: .5em;
+    margin-bottom: 0;
   }
   input[type="text"], textarea {
     padding: 0.5em;
