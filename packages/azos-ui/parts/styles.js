@@ -248,12 +248,12 @@ export const textInputStyles = css`
     display: block;
     margin-bottom: .5em;
   }
-   {
+  {
     color: #b4b4b4;
   }
   input[type="text"], textarea {
     padding: 0.5em;
-    border: .5em solid var(--s-default-bor-ctl);
+    border: var(--s-default-bor-ctl);
     width: 100%;
     box-sizing: border-box;
     font-family: Roboto, Tahoma, sans-serif;
@@ -266,18 +266,7 @@ export const textInputStyles = css`
     background: var(--paper);
     border: .12em solid #b4b4b4;
   }
-  .defaultTxt ~ input[type="text"]::placeholder, .defaultTxt ~ textarea::placeholder { color: var(--s-default-fg-ctl); }
-  .okTxt ~ input[type="text"]::placeholder,      .okTxt ~ textarea::placeholder      { color: var(--s-ok-fg-ctl); }
-  .infoTxt ~ input[type="text"]::placeholder,    .infoTxt ~ textarea::placeholder    { color: var(--s-info-fg-ctl); }
-  .warningTxt ~ input[type="text"]::placeholder, .warningTxt ~ textarea::placeholder { color: var(--s-warn-fg-ctl); }
-  .alertTxt ~ input[type="text"]::placeholder,   .alertTxt ~ textarea::placeholder   { color: var(--s-alert-fg-ctl); }
-  .errorTxt ~ input[type="text"]::placeholder,   .errorTxt ~ textarea::placeholder   { color: var(--s-error-fg-ctl); }
-  .defaultTxt ~ input[type="text"], .defaultTxt ~ textarea  { border: .12em solid var(--s-default-fg-ctl); }
-  .okTxt ~ input[type="text"],      .okTxt ~ textarea       { border: .12em solid var(--s-ok-fg-ctl); }
-  .infoTxt ~ input[type="text"],    .infoTxt ~ textarea     { border: .12em solid var(--s-info-fg-ctl); }
-  .warningTxt ~ input[type="text"], .warningTxt ~ textarea  { border: .12em solid var(--s-warn-fg-ctl); }
-  .alertTxt ~ input[type="text"],   .alertTxt ~ textarea    { border: .12em solid var(--s-alert-fg-ctl); }
-  .errorTxt ~ input[type="text"],   .errorTxt ~ textarea    { border: .12em solid var(--s-error-fg-ctl); }
+  input[type="text"]::placeholder, textarea::placeholder { color: var(--ghost); }
   input[type="text"]:disabled::placeholder,
   textarea:disabled::placeholder,
   div.disabled label {

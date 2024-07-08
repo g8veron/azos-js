@@ -1,3 +1,4 @@
+import { isOneOf } from 'azos/strings';
 import { html, parseRank, parseStatus } from '../ui.js';
 import { AzosPart } from './part.js';
 import { baseStyles, textInputStyles } from './styles.js';
@@ -7,7 +8,7 @@ export class TextInput extends AzosPart {
   static styles = [baseStyles, textInputStyles];
 
   static properties = {
-    type: { type: String }, // 'input' or 'textarea'
+    inputType: { type: String }, // 'input' or 'textarea'
     title: { type: String },
     placeholder: { type: String },
     value: { type: String }
@@ -15,28 +16,35 @@ export class TextInput extends AzosPart {
 
   constructor() {
     super();
-    this.type = 'input'; // default to input
+    this.inputType = 'input'; // default to input
     this.title = '';
     this.placeholder = '';
     this.value = '';
   }
 
+  /** True if the input type is simple text box instead of textarea */
+  get isInputText() { return !this.isTextarea;}
+
+  /** True if the input type is textarea instead of simple text box */
+  get isTextarea(){  return this.inputType === 'textarea';}
+
   renderPart() {
-    const rank=`${parseRank(this.rank, true)}`;
-    const status=`${parseStatus(this.status, true)}` || 'default';
+    const clsRank =   `${parseRank(this.rank, true)}`;
+    const clsBgColor = `${parseStatus(this.status, true, "Bg")}`;
+    const clsTxtColor = `${parseStatus(this.status, true, "Txt")}`;
     const disableClass = `${this.isDisabled ? 'disabled' : ''}`;
 
-    const inputElement = html`${this.type === 'textarea'
+    const inputElement = html`${this.isTextarea
       ? html`
-        <textarea id="${this.id}" class="${rank} ${status}Bg ${status}Txt" placeholder="${this.placeholder}" .disabled=${this.isDisabled}>${this.value}</textarea>
+        <textarea id="${this.id}" class="${clsRank} ${clsBgColor} ${clsTxtColor}" placeholder="${this.placeholder}" .disabled=${this.isDisabled}>${this.value}</textarea>
       ` : html`
-        <input type="text" id="${this.id}" class="${rank} ${status}Bg ${status}Txt" placeholder="${this.placeholder}" .value="${this.value}" .disabled=${this.isDisabled} />
+        <input type="text" id="${this.id}" class="${clsRank} ${clsBgColor} ${clsTxtColor}" placeholder="${this.placeholder}" .value="${this.value}" .disabled=${this.isDisabled} />
       `
     }`;
 
     return html`
       <div class="${disableClass}">
-        <label for="${this.id}" class="${rank} ${status}Txt">${this.title}</label>
+        <label for="${this.id}" class="${clsRank} ${clsTxtColor}">${this.title}</label>
         ${inputElement}
       </div>
     `;
