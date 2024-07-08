@@ -259,7 +259,7 @@ export const textInputStyles = css`
   .label-bottomLeft, .label-bottomCenter, .label-bottomRight {
     flex-direction: column-reverse;
   }
-  .label-bottomLeft, .label-bottomCenter, .label-bottomRight {
+  .label-bottomLeft label, .label-bottomCenter label, .label-bottomRight label {
     margin-top: .5em;
   }
   label {
@@ -292,7 +292,7 @@ export const textInputStyles = css`
   }
   input[type="text"]:disabled, textarea:disabled {
     background: var(--paper);
-    border: .12em solid #b4b4b4;
+    resize: none;
   }
   input[type="text"]::placeholder, textarea::placeholder { color: var(--ghost); }
   input[type="text"]:disabled::placeholder,
